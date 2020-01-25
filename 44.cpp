@@ -8,6 +8,8 @@ public:
     void nhap();
     void xuat();
     void giai();
+    void khongdoi();
+    void codoi();
 };
 
 void PTB2::nhap()
@@ -43,10 +45,25 @@ void PTB2::giai()
     }
 
 }
+void PTB2::khongdoi()
+{
+    a = 0;
+    b = 0;
+    c = 0;
+}
+void PTB2::codoi()
+{
+    a = 1 ;
+    b = 4 ;
+    c = 3 ;
+}
+
 int main()
 {
     PTB2 P,Q;
     P.nhap();
+    P.xuat();
+    P.codoi();
     P.xuat();
     P.giai();
     return 0;
