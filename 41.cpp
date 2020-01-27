@@ -33,6 +33,7 @@ void sinhvien::xuat()
     cout << setw(10) << t;
     cout << setw(10) << l;
     cout << setw(10) << h;
+    cout << setw(10) << (t+l+h)/3;
 }
 int main()
 {
@@ -50,6 +51,7 @@ int main()
     cout << setw(10) << "Diem Toan";
     cout << setw(10) << "Diem Ly";
     cout << setw(10) << "Diem Hoa";
+    cout << setw(10) << "Diem TB";
     cout << endl;
     for(i=0;i<n;i++)
     {
