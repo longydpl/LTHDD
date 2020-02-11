@@ -9,7 +9,7 @@ public:
     void xuat();
     void giai();
     void khongdoi();
-    void codoi();
+    void codoi(float x, float y, float z);
 };
 
 void PTB2::nhap()
@@ -51,20 +51,23 @@ void PTB2::khongdoi()
     b = 0;
     c = 0;
 }
-void PTB2::codoi()
+void PTB2::codoi(float x, float y, float z)
 {
-    a = 1 ;
-    b = 4 ;
-    c = 3 ;
+    a = x ;
+    b = y ;
+    c = z ;
 }
 
 int main()
 {
     PTB2 P,Q;
+    cout << "Phuong trinh P:\n";
     P.nhap();
     P.xuat();
-    P.codoi();
-    P.xuat();
     P.giai();
+    cout << "\nPhuong trinh Q:\n";
+    Q.codoi(4,2,3);
+    Q.xuat();
+    Q.giai();
     return 0;
 }
