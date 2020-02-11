@@ -15,7 +15,7 @@ public:
     void nhap();
     void xuat();
     friend class DOANH_NGHIEP;
-    friend void tongdoanhthu(DOANH_NGHIEP *dn, int n);
+    friend long tongdoanhthu(DOANH_NGHIEP *dn, int n);
 
 };
 class DIA_CHI
@@ -41,7 +41,8 @@ public:
     void nhap();
     void xuat();
     friend void timkiem(DOANH_NGHIEP *dn, int n);
-    friend void tongdoanhthu(DOANH_NGHIEP *dn, int n);
+    friend long tongdoanhthu(DOANH_NGHIEP *dn, int n);
+    friend void sua(DOANH_NGHIEP *dn, int n, int x);
 };
 
 void Date::nhap()
@@ -82,6 +83,8 @@ void DOANH_NGHIEP::nhap()
     cout << "Giam doc: ";
     fflush(stdin);
     gets(giamdoc);
+    cout << "Doanh thu: ";
+    cin >> doanhthu;
 
 }
 void DOANH_NGHIEP::xuat()
@@ -94,6 +97,7 @@ void DOANH_NGHIEP::xuat()
         cout << setw(15)<< dc.quan;
         cout << setw(15) << dc.tp;
         cout << setw(15) << giamdoc;
+        cout << setw(15) << doanhthu;
 }
 void timkiem(DOANH_NGHIEP *dn, int n)
 {
@@ -106,9 +110,62 @@ void timkiem(DOANH_NGHIEP *dn, int n)
             }
     }
 }
-void tongdoanhthu(DOANH_NGHIEP *dn, int n)
+long tongdoanhthu(DOANH_NGHIEP *dn, int n)
 {
-
+    long S = 0;
+    for(int i=0;i<n;i++)
+    {
+        if(dn[i].ngayTL.year == 2015) S+=dn[i].doanhthu;
+    }
+    return S;
+}
+void sua(DOANH_NGHIEP *dn, int n, int x)
+{
+    int k=0;
+    cout << "\nDanh sach Doanh nghiep truoc khi sua:\n";
+    cout << "maDN";
+    cout << setw(15) << "tenDN";
+    cout << "\t" << setw(12)  << "Ngay thang";
+    cout << setw(12) << "Phone";
+    cout << setw(15) << "Phuong";
+    cout << setw(15) << "Quan";
+    cout << setw(15) << "City";
+    cout << setw(15) << "GiamDoc";
+    cout << setw(15) << "Doanhthu";
+    cout <<"\n============================================================================================================\n";
+    for(int i=0;i<n;i++)
+    {
+        dn[i].xuat();
+        cout << "\n";
+    }
+    for(int i = 0;i,n;i++)
+    {
+        if(dn[i].maDN == x)
+        {
+            dn[i].nhap();
+            k=1;
+        }
+    }
+    if(k==0) cout << "\nKhong co doanh nghiep thoa man!!!";
+        else
+        {
+            cout << "\nDanh sach Doanh nghiep sau khi sua:\n";
+            cout << "maDN";
+            cout << setw(15) << "tenDN";
+            cout << "\t" << setw(12)  << "Ngay thang";
+            cout << setw(12) << "Phone";
+            cout << setw(15) << "Phuong";
+            cout << setw(15) << "Quan";
+            cout << setw(15) << "City";
+            cout << setw(15) << "GiamDoc";
+            cout << setw(15) << "Doanhthu";
+            cout <<"\n============================================================================================================\n";
+            for(int i=0;i<n;i++)
+            {
+                dn[i].xuat();
+                cout << "\n";
+            }
+        }
 }
 
 int main()
@@ -128,6 +185,7 @@ int main()
     cout << setw(15) << "Quan";
     cout << setw(15) << "City";
     cout << setw(15) << "GiamDoc";
+    cout << setw(15) << "Doanhthu";
     cout <<"\n============================================================================================================\n";
     for(i=0;i<n;i++)
     {
@@ -143,8 +201,15 @@ int main()
     cout << setw(15) << "Quan";
     cout << setw(15) << "City";
     cout << setw(15) << "GiamDoc";
+    cout << setw(15) << "Doanhthu";
     cout <<"\n============================================================================================================\n";
     timkiem(dn,n);
+    cout << "Tong doanh thu cua cac doanh nghiep thanh lap nam 2015: " << tongdoanhthu(dn,n);
+    cout <<"\n============================================================================================================\n";
+    int x;
+    cout << "Nhap ma Doanh nghiep can sua: ";
+    cin >> x;
+    sua(dn,n,x);
     getch();
     delete(dn);
     return 0;

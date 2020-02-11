@@ -9,14 +9,8 @@ class VECTO
 public:
     void nhap();
     void xuat();
-    VECTO operator+(VECTO A, VECTO B)
-    {
-        VECTO C;
-        C.x = A.x + B.x;
-        C.y = A.y + B.y;
-    return C;
-    }
-    VECTO operator-();
+    VECTO operator+(VECTO A);
+    VECTO operator-(VECTO A);
 };
 
 void VECTO::nhap()
@@ -30,14 +24,34 @@ void VECTO::xuat()
 {
     cout << "Vecto co toa do (" << x << "," << y << ")";
 }
+VECTO VECTO::operator+(VECTO A)
+{
+    VECTO C;
+    C.x = this->x+A.x;
+    C.y = this->y+A.y;
+    return C;
+}
+VECTO VECTO::operator-(VECTO A)
+{
+    VECTO C;
+    C.x = this->x-A.x;
+    C.y = this->y-A.y;
+    return C;
+}
 int main()
 {
-    VECTO A,B,S;
+    VECTO A,B,C;
+    cout << "Nhap Vecto A: \n";
     A.nhap();
     A.xuat();
-    B.xuat();
+    cout << "Nhap Vecto B: \n";
     B.nhap();
-    S = operator+(A,B);
-    S.xuat();
+    B.xuat();
+    cout << "\nTong hai Vecto A va Vecto B: ";
+    C = A.operator+(B);
+    C.xuat();
+    cout << "\nHieu hai Vecto A va Vecto B: ";
+    C = A.operator-(B);
+    C.xuat();
     return 0;
 }
