@@ -100,14 +100,11 @@ int main()
 {
     NODE* root = NULL;
     NV a[11];
-    int n = 11;
+    int n = 7;
     for(int i=0;i<n;i++)
     {
         cout << "Ma NV: ";
         cin >> a[i].manv;
-        cout << "Ten NV:";
-        fflush(stdin);
-        gets(a[i].ten);
     }
     CreateTree(root,a,n);
     //duyet LRN
@@ -115,8 +112,8 @@ int main()
     LRN(root);
     cout << "\n=============\n";
     //Tim kiem duyet theo NLR
-    cout << "Thong tin nhung nhan vien ten Lan:\n";
-    NLR(root);
+    //cout << "Thong tin nhung nhan vien ten Lan:\n";
+    //NLR(root);
     return 0;
 }
 
