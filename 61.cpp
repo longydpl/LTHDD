@@ -11,6 +11,7 @@ public:
     void xuat();
     VECTO operator+(VECTO A);
     VECTO operator-(VECTO A);
+    VECTO cong(VECTO A);
 };
 
 void VECTO::nhap()
@@ -26,6 +27,8 @@ void VECTO::xuat()
 }
 VECTO VECTO::operator+(VECTO A)
 {
+    /*
+    */
     VECTO C;
     C.x = this->x+A.x;
     C.y = this->y+A.y;
@@ -38,6 +41,13 @@ VECTO VECTO::operator-(VECTO A)
     C.y = this->y-A.y;
     return C;
 }
+VECTO VECTO::cong(VECTO A)
+{
+    VECTO C;
+    C.x = this->x + A.x;
+    C.y = this->y + A.y;
+    return C;
+}
 int main()
 {
     VECTO A,B,C;
@@ -48,7 +58,7 @@ int main()
     B.nhap();
     B.xuat();
     cout << "\nTong hai Vecto A va Vecto B: ";
-    C = A.operator+(B);
+    C = A.cong(B);
     C.xuat();
     cout << "\nHieu hai Vecto A va Vecto B: ";
     C = A.operator-(B);
